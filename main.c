@@ -453,6 +453,8 @@ int main(int argc, char *argv[])
 	arg_password = "pass";
 	pthread_mutex_init(&lock, NULL);
 
+	sigaction(SIGPIPE, &(struct sigaction){SIG_IGN}, NULL);
+	
 	while ((ret = getopt(argc, argv, "n:u:p:l:a:h")) != -1) {
 		switch (ret) {
 		case 'n':{
